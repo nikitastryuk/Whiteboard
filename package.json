@@ -16,8 +16,10 @@
     "bootstrap-vue": "^1.2.0",
     "paper": "^0.11.5",
     "popper.js": "^1.12.9",
+    "uuid4": "^1.0.0",
     "vue": "^2.5.3",
-    "vue-slider-component": "^2.6.2"
+    "vue-slider-component": "^2.6.2",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

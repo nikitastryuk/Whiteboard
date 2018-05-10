@@ -1,23 +1,20 @@
-import Vue from 'vue'
-import BootstrapVue from "bootstrap-vue"
-import App from './App.vue'
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap-vue/dist/bootstrap-vue.css"
+import Vue from 'vue';
+import App from './App.vue';
 
-import fontawesome from '@fortawesome/fontawesome'
-import pencil from '@fortawesome/fontawesome-free-solid/faPencilAlt'
-import undo from '@fortawesome/fontawesome-free-solid/faUndo'
-import redo from '@fortawesome/fontawesome-free-solid/faRedo'
-import eraser from '@fortawesome/fontawesome-free-solid/faEraser'
-import circle from '@fortawesome/fontawesome-free-solid/faCircle'
-import font from '@fortawesome/fontawesome-free-solid/faFont'
-import upload from '@fortawesome/fontawesome-free-solid/faUpload'
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
-fontawesome.library.add(pencil, undo, redo, eraser,circle, font, upload);
+import store from './store/store';
+
+import fontawesome from '@fortawesome/fontawesome';
+import icons from './assets/fontawesome';
+fontawesome.library.add(icons);
 
 Vue.use(BootstrapVue);
 
 new Vue({
   el: '#app',
+  store,
   render: h => h(App)
-})
+});
