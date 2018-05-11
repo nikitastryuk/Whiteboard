@@ -8,7 +8,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import store from './store/store';
 
 import fontawesome from '@fortawesome/fontawesome';
-import icons from './assets/fontawesome';
+import icons from './assets/fontawesomeIcons';
 fontawesome.library.add(icons);
 
 Vue.use(BootstrapVue);

@@ -5,6 +5,7 @@ import eraser from '@fortawesome/fontawesome-free-solid/faEraser'
 import circle from '@fortawesome/fontawesome-free-solid/faCircle'
 import font from '@fortawesome/fontawesome-free-solid/faFont'
 import upload from '@fortawesome/fontawesome-free-solid/faUpload'
+import brush from '@fortawesome/fontawesome-free-solid/faPaintBrush'
 
 export default {
     pencil,
@@ -13,5 +14,6 @@ export default {
     eraser,
     circle,
     font,
-    upload
+    upload,
+    brush
 }

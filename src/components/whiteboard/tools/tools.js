@@ -1,5 +1,9 @@
-import { tool as pen } from './pen';
+import { tool as pencil } from './pencil';
+import { tool as brush } from './brush';
+import { tool as eraser } from './eraser';
 
 export default {
-    pen
+    pencil,
+    brush,
+    eraser
 }
