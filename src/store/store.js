@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import dashboardModule from './modules/dashboard';
+import whiteboardModule from './modules/whiteboard';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
-        dashboardModule
+        whiteboardModule
     }
 });
