@@ -1,0 +1,68 @@
+import paper from 'paper';
+import store from '../../store/store';
+import history from '../history';
+import { createLayer } from '../shared';
+
+let local ={
+    path : null,
+    center : null,
+    layer: null
+};
+
+export class TriangleAction{
+    constructor(args) {
+        this._args = args;
+    }
+    exec() {
+        if (!paper.project.layers[this._args.layer]) {
+            createLayer(this._args.layer);
+        }
+        if (this.removed) {
+            return paper.project.layers[this._args.layer].addChildren(this.removed);
+        }
+ 
+
+        return this;
+    }
+    unexec() {
+        this.removed = paper.project.layers[this._args.layer].removeChildren();
+    }
+    get args() {
+        return this._args;
+    }
+}
+
+function onMouseDown(event) {
+    local.layer = createLayer();
+    local.center = event.point;
+}
+
+function onMouseDrag(event) {
+    if (local.path) {
+        local.path.remove();
+    }
+    local.path = new Path.RegularPolygon(local.center, 3, Math.sqrt((event.point.x -  local.center.x)*(event.point.x -  local.center.x) + (event.point.y - local.center.y)*(event.point.y - local.center.y)));
+    local.path.strokeColor = store.getters.shapeArgs.color;
+    local.path.strokeWidth = store.getters.shapeArgs.size;
+}
+
+function onMouseUp(event) {
+    local.layer.addChild(local.path);
+    const action = new TriangleAction({
+        layer: local.path.layer.name,
+        tool: store.getters.tool,
+        points : local.path.segments.map(seg => {
+            return {
+                x: seg._point._x,
+                y: seg._point._y
+            }
+        })
+    });
+    history.add(action);
+    local.path = null;
+}
+
+export const tool = new paper.Tool();
+tool.onMouseDown = onMouseDown;
+tool.onMouseDrag = onMouseDrag;
+tool.onMouseUp = onMouseUp;

@@ -1,4 +1,4 @@
-import tools from '../../components/whiteboard/tools/tools';
+import tools from '../../tools/tool/tools';
 import paper from 'paper';
 const state = {
     tool: null,

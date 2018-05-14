@@ -6,9 +6,9 @@
                 class="tool">
                 <font-awesome-icon :style="{'color' : toolColor}" :icon="activeTool" />
             </div>
-            <div @click="hideToolSettings(); hideShapesSettings(); isEraserSettingsOpened=!isEraserSettingsOpened;" :class="{ active : tool === 'eraser'}"
+            <div @click="hideToolSettings(); hideShapesSettings(); select('eraser'); isEraserSettingsOpened=!isEraserSettingsOpened;" :class="{ active : tool === 'eraser'}"
                 class="tool">
-                <font-awesome-icon @click="select('eraser')" icon="eraser" />
+                <font-awesome-icon  style="color:lightblue" icon="eraser" />
             </div>
             <div @click="hideToolSettings(); hideEraserSettings(); isShapesSettingsOpened=!isShapesSettingsOpened;" :style="{'color' : shapeColor}"
                 :class="{ active : tool === 'circle'  || tool === 'square'  || tool === 'triangle'  || tool === 'line'}" class="tool">
@@ -16,9 +16,6 @@
             </div>
             <div class="tool">
                 <font-awesome-icon icon="font" />
-            </div>
-            <div class="tool">
-                <font-awesome-icon icon="upload" />
             </div>
         </div>
         <!--Tool settings-->
@@ -68,7 +65,7 @@
 </template>
 
 <script>
-    import colorPalette from '../../assets/colorPalette';
+    import colorPalette from '../../../assets/colorPalette';
     import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
     import RangeSliderTools from './rangeSliders/RangeSliderTools.vue';
     import RangeSliderEraser from './rangeSliders/RangeSliderEraser.vue';
@@ -240,7 +237,7 @@
     } //Tool select end 
     //Shared
     .active {
-        background: lightgray;
+        background: #e1e8f0;
         border-radius: 5px;
     }
 
