@@ -1,13 +1,12 @@
 <template>
-    <whiteboard></whiteboard>
+  <whiteboard></whiteboard>
 </template>
 
 <script>
-import Whiteboard from "./components/whiteboard/WhiteBoard.vue";
+import Whiteboard from "./components/WhiteBoard.vue";
 export default {
   components: {
-    "whiteboard": Whiteboard
+    whiteboard: Whiteboard
   }
-}
+};
 </script>
-

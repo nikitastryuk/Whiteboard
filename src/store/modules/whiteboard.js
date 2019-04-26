@@ -1,5 +1,5 @@
 import tools from '../../tools/tool/tools';
-import paper from 'paper';
+
 const state = {
     tool: null,
     toolArgs: {
@@ -8,7 +8,7 @@ const state = {
     },
     eraserArgs: {
         size: 2,
-        color: 'lightblue'
+        color: '#133337'
     },
     shapeArgs: {
         size: 2,
@@ -18,33 +18,31 @@ const state = {
 
 const mutations = {
     //ToolArgs
-    'SET_TOOL_COLOR' (state, toolColor) {
+    'SET_TOOL_COLOR'(state, toolColor) {
         state.toolArgs.color = toolColor;
     },
-    'SET_TOOL_SIZE' (state, toolSize) {
+    'SET_TOOL_SIZE'(state, toolSize) {
         state.toolArgs.size = toolSize;
     },
     //EraserArgs
-    'SET_ERASER_SIZE' (state, eraserSize) {
+    'SET_ERASER_SIZE'(state, eraserSize) {
         state.eraserArgs.size = eraserSize;
     },
-    'SET_ERASER_COLOR' (state, eraserColor) {
+    'SET_ERASER_COLOR'(state, eraserColor) {
         state.eraserArgs.color = eraserColor;
     },
     //ShapesArgs
-    'SET_SHAPE_SIZE' (state, shapeSize) {
+    'SET_SHAPE_SIZE'(state, shapeSize) {
         state.shapeArgs.size = shapeSize;
     },
-    'SET_SHAPE_COLOR' (state, shapeColor) {
+    'SET_SHAPE_COLOR'(state, shapeColor) {
         state.shapeArgs.color = shapeColor;
     },
     //Tool
-    'SET_WHITEBOARD_TOOL' (state, tool) {
+    'SET_WHITEBOARD_TOOL'(state, tool) {
         state.tool = tool;
         if (tools[tool]) {
             tools[tool].activate();
-        } else {
-            console.warn('unknown tool');
         }
     }
 }
@@ -88,7 +86,7 @@ const actions = {
     setWhiteboardTool: ({
         commit
     }, tool) => {
-        commit('SET_WHITEBOARD_TOOL',  tool);
+        commit('SET_WHITEBOARD_TOOL', tool);
     }
 }
 

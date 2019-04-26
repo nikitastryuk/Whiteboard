@@ -2,37 +2,18 @@ import paper from 'paper';
 import store from '../../store/store';
 import { createLayer } from '../shared';
 import history from '../history';
+import { DrawAction } from '../action'
 
-let local ={
-    path : null
+let local = {
+    path: null
 };
 
-export class LineAction{
-    constructor(args) {
-        this._args = args;
-    }
-
-    exec() {
-        if (!paper.project.layers[this._args.layer]) {
-            createLayer(this._args.layer);
-        }
-        if (this.removed) {
-            return paper.project.layers[this._args.layer].addChildren(this.removed);
-        }
-    }
-    unexec() {
-        this.removed = paper.project.layers[this._args.layer].removeChildren();
-    }
-    get args() {
-        return this._args;
-    }
-}
 
 function onMouseDrag(event) {
     if (local.path) {
         local.path.remove();
     }
-    local.path = new Path.Line({
+    local.path = new paper.Path.Line({
         from: event.downPoint,
         to: event.point,
         strokeColor: 'black'
@@ -41,11 +22,11 @@ function onMouseDrag(event) {
     local.path.strokeWidth = store.getters.shapeArgs.size;
 }
 
-function onMouseUp(event) {
+function onMouseUp() {
     let layer = createLayer();
     layer.addChild(local.path);
-    
-    const action = new LineAction({
+
+    const action = new DrawAction({
         layer: local.path.layer.name,
         tool: store.getters.tool,
         points: local.path.segments.map(seg => {

@@ -26,4 +26,5 @@ class History {
     }
 }
 
+// Default size 20
 export default new History(20);

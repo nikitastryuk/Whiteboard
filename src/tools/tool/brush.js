@@ -2,34 +2,15 @@ import paper from 'paper';
 import store from '../../store/store';
 import { createLayer } from '../shared';
 import history from '../history';
+import { DrawAction } from '../action'
 
 let local = {
     path: null
 }
 
-export class BrushAction {
-    constructor(args) {
-        this._args = args;
-    }
-    exec() {
-        if (!paper.project.layers[this._args.layer]) {
-            createLayer(this._args.layer);
-        }
-        if (this.removed) {
-            return paper.project.layers[this._args.layer].addChildren(this.removed)
-        }
-    }
-    unexec() {
-        this.removed = paper.project.layers[this._args.layer].removeChildren();
-    }
-    get args() {
-        return this._args;
-    }
-}
-
-function onMouseDown(event) {
+function onMouseDown() {
     let layer = createLayer();
-    local.path= new Path();
+    local.path = new paper.Path();
     let rgb = hexToRgb(store.getters.toolArgs.color || '#000000');
     local.path.fillColor = `rgba(${rgb.r},${rgb.g},${rgb.b},0.4)`;
     layer.addChild(local.path);
@@ -50,9 +31,9 @@ function onMouseDrag(event) {
 }
 
 
-function onMouseUp(event) {
+function onMouseUp() {
     local.path.simplify();
-    const action = new BrushAction({
+    const action = new DrawAction({
         layer: local.path.layer.name,
         tool: store.getters.tool,
         points: local.path.segments.map(seg => {

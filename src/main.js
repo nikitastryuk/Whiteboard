@@ -1,20 +1,14 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-import BootstrapVue from "bootstrap-vue";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-
 import store from './store/store';
 
-import fontawesome from '@fortawesome/fontawesome';
-import icons from './assets/fontawesomeIcons';
-fontawesome.library.add(icons);
+import './config/fontawesome';
+import "vue-slider-component/theme/default.css";
 
-Vue.use(BootstrapVue);
+Vue.config.productionTip = false;
 
 new Vue({
-  el: '#app',
+  render: h => h(App),
   store,
-  render: h => h(App)
-});
+}).$mount('#app');
