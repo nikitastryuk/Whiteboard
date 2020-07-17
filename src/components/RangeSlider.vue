@@ -10,7 +10,7 @@
     :bgStyle="{'backgroundColor': '#e6e9f0'}"
     :sliderStyle="{'backgroundColor': 'black', 'boxShadow': 'unset'}"
     tooltip="none"
-    :width="'168px'"
+    :width="'260px'"
     v-model="sliderValue"
   ></vue-slider>
 </template>
